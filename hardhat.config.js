@@ -3,7 +3,8 @@ require("dotenv").config();
 
 /** @type import('hardhat/config').HardhatUserConfig */
 
-const PRIVATE_KEY = process.env.PRIVATE_KEY
+const PRIVATE_KEY_4 = process.env.PRIVATE_KEY_4
+const PRIVATE_KEY_5 = process.env.PRIVATE_KEY_5
 const RPC_URL = process.env.RPC_URL
 
 const SEPOLIA_PK = process.env.SEPOLIA_PK
@@ -24,7 +25,7 @@ module.exports = {
     },
     geth: {
       url: RPC_URL,
-      accounts: [PRIVATE_KEY],
+      accounts: [PRIVATE_KEY_4, PRIVATE_KEY_5],
       chainId: 12345
     },
     ganache: {

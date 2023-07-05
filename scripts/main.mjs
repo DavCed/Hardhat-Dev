@@ -39,12 +39,10 @@ export async function storeOnChain(cid,url) {
 }
 
 export async function getFromChain(cid) {
-  let content = null;
-  if(cid === 'testing') content = await contract.getFile(cid); 
+  if(cid === 'testing') return await contract.getFile(cid); 
   const endpt = await contract.getFile(cid);
   const response = await fetch(endpt);
-  content = await response.text();
-  return content;
+  return await response.text();
 }
 
 main().catch((error) => {
