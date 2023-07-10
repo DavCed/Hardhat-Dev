@@ -10,7 +10,7 @@ async function main() {
   contractFactory = await loadContract("DistributedStorage");
   await deployContract();
   const data = await runIPFSNetwork('test.txt','testdata');
-  const cid = await addFileToIPFS(data);
+  const cid = (await addFileToIPFS(data)).toString();
   const url = `http://ipfs.io/ipfs/${cid}/`;
   ipfsNode.stop();
   const transactionResponse = await storeOnChain(cid,url);
