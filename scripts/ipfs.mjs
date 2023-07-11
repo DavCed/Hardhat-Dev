@@ -15,5 +15,6 @@ export async function addFileToIPFS(data) {
   const file = await ipfsNode.add(data);
   console.log(`Added File: ${file.path + ' ' + file.cid}`);
   console.log("*****************************************************************");
+  ipfsNode.stop();
   return file.cid;
 }

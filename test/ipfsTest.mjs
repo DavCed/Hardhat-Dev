@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { addFileToIPFS, ipfsNode, runIPFSNetwork } from '../scripts/ipfs.mjs';
+import { addFileToIPFS, runIPFSNetwork } from '../scripts/ipfs.mjs';
 
 describe("Test IPFS process", function () {
     const dataTest = {

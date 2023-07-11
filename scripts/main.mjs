@@ -1,5 +1,5 @@
 import ethers from "hardhat";
-import { runIPFSNetwork, ipfsNode, addFileToIPFS } from "./ipfs.mjs";
+import { runIPFSNetwork, addFileToIPFS } from "./ipfs.mjs";
 
 export let contract = null;
 let contractFactory = null;
@@ -12,7 +12,6 @@ async function main() {
   const data = await runIPFSNetwork('test.txt','testdata');
   const cid = (await addFileToIPFS(data)).toString();
   const url = `http://ipfs.io/ipfs/${cid}/`;
-  ipfsNode.stop();
   const transactionResponse = await storeOnChain(cid,url);
   console.log(`Transaction hash: ${transactionResponse.hash}`);
   const content = await getFromChain(cid);
