@@ -1,4 +1,4 @@
-import { assert, expect } from "chai";
+import { expect } from "chai";
 import { loadContract, deployContract, contract, storeOnChain, transactionResponse, getFromChain } from "../scripts/main.mjs";
 import data from "../artifacts/contracts/DistributedStorage.sol/DistributedStorage.json" assert {type:'json'};
 
