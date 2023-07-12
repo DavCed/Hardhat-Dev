@@ -3,11 +3,11 @@ require("dotenv").config();
 
 /** @type import('hardhat/config').HardhatUserConfig */
 
-const PRIVATE_KEY_4 = process.env.PRIVATE_KEY_4
-const PRIVATE_KEY_5 = process.env.PRIVATE_KEY_5
-const RPC = process.env.RPC
+const GETH_PK_1 = process.env.GETH_PK_1
+const GETH_PK_2 = process.env.GETH_PK_2
+const GETH_RPC = process.env.GETH_RPC
 
-const SEPOLIA_PK = process.env.SEPOLIA_PK
+const SEPOLIA_PK_2 = process.env.SEPOLIA_PK_2
 const SEPOLIA_RPC = process.env.SEPOLIA_RPC
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY
 
@@ -20,12 +20,12 @@ module.exports = {
   networks: {
     sepolia: {
       url: SEPOLIA_RPC,
-      accounts: [SEPOLIA_PK],
+      accounts: [SEPOLIA_PK_2],
       chainId: 11155111,
     },
     geth: {
-      url: RPC,
-      accounts: [PRIVATE_KEY_4, PRIVATE_KEY_5],
+      url: GETH_RPC,
+      accounts: [GETH_PK_1, GETH_PK_2],
       chainId: 12345
     },
     ganache: {
