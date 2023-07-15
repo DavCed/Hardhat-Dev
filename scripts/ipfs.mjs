@@ -1,16 +1,16 @@
-import { create } from 'ipfs-core';
+import { create } from "ipfs-core";
 
 export let ipfsNode = null;
 
 export async function runIPFSNetwork() {
   // Start IPFS network
-  console.log('IPFS started running...');
+  console.log("IPFS started running...");
   ipfsNode = await create();
 }
 
 export async function stopIPFSNetwork() {
   // Stop IPFS network
-  console.log('IPFS stopped running...');
+  console.log("IPFS stopped running...");
   ipfsNode.stop();
 }
 
@@ -21,11 +21,9 @@ export async function addFileToIPFS(data) {
   return file.cid;
 }
 
-export async function getFileFromIPFS(cid){
+export async function getFileFromIPFS(cid) {
   // Get file from IPFS network
   const info = [];
-  for await (const chunk of ipfsNode.cat(cid)) {
-    info.push(chunk);
-  }
+  for await (const chunk of ipfsNode.cat(cid)) info.push(chunk);
   return info;
 }

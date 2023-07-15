@@ -10,10 +10,17 @@ contract DistributedStorage {
         string url;
     }
 
-    function storeFile(string memory cid, string memory url) public {
-        _files[cid] = url;
-        File memory file = File(cid, url);
-        allFiles.push(file);
+    function storeFile(
+        string memory cid,
+        string memory url
+    ) public returns (bool) {
+        bool checked = checkFiles(cid);
+        if (checked) {
+            _files[cid] = url;
+            File memory file = File(cid, url);
+            allFiles.push(file);
+        }
+        return checked;
     }
 
     function getFile(string memory cid) public view returns (string memory) {
@@ -22,5 +29,14 @@ contract DistributedStorage {
 
     function getAllFiles() public view returns (File[] memory) {
         return allFiles;
+    }
+
+    function checkFiles(string memory cid) public returns (bool) {
+        for (uint256 i = 0; i < allFiles.length; i++) {
+            if (keccak256(bytes(allFiles[i].cid)) == keccak256(bytes(cid))) {
+                return false;
+            }
+        }
+        return true;
     }
 }
