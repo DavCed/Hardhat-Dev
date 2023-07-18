@@ -17,8 +17,7 @@ contract DistributedStorage {
         bool checked = checkFiles(cid);
         if (checked) {
             _files[cid] = url;
-            File memory file = File(cid, url);
-            allFiles.push(file);
+            allFiles.push(File(cid, url));
         }
         return checked;
     }
@@ -31,7 +30,7 @@ contract DistributedStorage {
         return allFiles;
     }
 
-    function checkFiles(string memory cid) public returns (bool) {
+    function checkFiles(string memory cid) public view returns (bool) {
         for (uint256 i = 0; i < allFiles.length; i++) {
             if (keccak256(bytes(allFiles[i].cid)) == keccak256(bytes(cid))) {
                 return false;
