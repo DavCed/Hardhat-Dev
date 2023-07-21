@@ -5,7 +5,7 @@ const contractFactory = await hre.ethers.getContractFactory(
 );
 
 const contract = await contractFactory.deploy();
-await contract.deploymentTransaction().wait(4);
+await contract.deploymentTransaction().wait(1);
 
 const address = (await contract.getAddress()).toString();
 console.log(`Contract Address (Distributed Storage): ${address}`);

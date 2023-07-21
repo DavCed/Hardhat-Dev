@@ -71,7 +71,7 @@ export async function deployContract() {
 
   // Deploy contract on chain
   contract = await contractFactory.deploy();
-  await contract.deploymentTransaction().wait(4);
+  await contract.deploymentTransaction().wait(1);
 
   // Get contract address
   const address = (await contract.getAddress()).toString();
