@@ -10,10 +10,12 @@ contract DistributedStorage {
         string url;
     }
 
-    function storeFile(string memory cid, string memory url) public {
-        if (checkAllFiles(cid)) {
-            _files[cid] = url;
-            allFiles.push(File(cid, url));
+    function storeFiles(File[] memory files) public {
+        for (uint256 i = 0; i < files.length; i++) {
+            if (checkAllFiles(files[i].cid)) {
+                _files[files[i].cid] = files[i].url;
+                allFiles.push(File(files[i].cid, files[i].url));
+            }
         }
     }
 

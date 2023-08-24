@@ -7,6 +7,7 @@ const GETH_PK_1 = process.env.GETH_PK_1;
 const GETH_PK_2 = process.env.GETH_PK_2;
 const GETH_RPC = process.env.GETH_RPC;
 
+const SEPOLIA_PK_1 = process.env.SEPOLIA_PK_1;
 const SEPOLIA_PK_2 = process.env.SEPOLIA_PK_2;
 const SEPOLIA_RPC = process.env.SEPOLIA_RPC;
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY;
@@ -20,7 +21,7 @@ module.exports = {
   networks: {
     sepolia: {
       url: SEPOLIA_RPC,
-      accounts: [SEPOLIA_PK_2],
+      accounts: [SEPOLIA_PK_1, SEPOLIA_PK_2],
       chainId: 11155111,
     },
     geth: {
